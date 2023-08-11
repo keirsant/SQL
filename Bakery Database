@@ -19,4 +19,5 @@ INSERT INTO bakery VALUES
 ;
 
 --display items by their seasonal availabilty 
-SELECT * FROM bakery WHERE seasonal LIKE "%spring%";
+SELECT * FROM bakery WHERE seasonal LIKE "%spring%" OR seasonal = "no";
+SELECT * FROM bakery WHERE seasonal IN ("%spring%", "no"); --nope
