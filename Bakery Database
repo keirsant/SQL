@@ -1,0 +1,22 @@
+CREATE TABLE bakery (id INTEGER PRIMARY KEY, name TEXT, category TEXT, seasonal TEXT, price INTEGER, stocklvl INTEGER);
+
+INSERT INTO bakery VALUES 
+(1, "apple pie", "pie", "no", 20, 5),
+(2, "pumpkin pie", "pie", "Fall Winter", 20, 8),
+(3, "sugar cream pie", "pie", "Fall Winter", 15, 4),
+(4, "cinamon rolls", "pastry", "no", 3, 36),
+(5, "lemon tiramisu", "cake", "Spring Summer", 3, 36),
+(6, "plum bars", "cookie", "Spring Summer", 2, 36),
+(7, "cranberry bars", "cookie", "Fall Winter", 2, 36),
+(8, "ricotta cake", "cake", "no", 15, 4),
+(9, "coconut cream pie", "pie", "no", 20, 3),
+(10, "plum blueberry pie", "pie", "Spring Summer", 20, 5),
+(11, "keylime pie", "pie", "Spring Summer", 15, 8),
+(12, "lemon berry cobbler", "cobbler", "Spring", 7, 24),
+(13, "burbon cherry cobbler", "cobbler", "Summer", 7, 24),
+(14, "pineapple upsidedown cake", "cake", "Summer", 20, 8),
+(15, "broccoli quiche", "savory", "no", 20, 4)
+;
+
+--display items by their seasonal availabilty 
+SELECT * FROM bakery WHERE seasonal LIKE "%spring%";
