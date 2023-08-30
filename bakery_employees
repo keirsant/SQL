@@ -13,7 +13,8 @@ CREATE TABLE employees (
 	thu_avail TEXT,
 	fri_avail TEXT,
 	sat_avail TEXT,
-	sun_avail TEXT);
+	sun_avail TEXT)
+	;
 
 INSERT INTO employees (name, empl_lvl, phone, age, address, tue_avail, wed_avail, thu_avail, fri_avail, sat_avail, sun_avail) VALUES
 	("JoAnna Day", 1, "724-567-2318", 38, "34 Happy Dr. Verona PA 15623", "04:00 - 14:00", "04:00 - 14:00", "04:00 - 14:00", "04:00 - 14:00", "04:00 - 14:00", "04:00 - 14:00"),
@@ -45,14 +46,16 @@ CREATE TABLE employee_levels (
 	position TEXT,
 	key TEXT,
 	trainer TEXT,
-	solo_work TEXT);
+	solo_work TEXT)
+	;
 
 INSERT INTO employee_levels VALUES
 	(1, "owner", "y", "y", "y"),
 	(2, "manager", "y", "y", "y"),
 	(3, "sr. staff", "n", "y", "y"),
 	(4, "staff", "n", "n", "y"),
-	(5, "trainee", "n", "n", "n");
+	(5, "trainee", "n", "n", "n")
+	;
 
 
 
@@ -60,16 +63,19 @@ CREATE TABLE training_levels (
 	id INTEGER PRIMARY KEY AUTOINCREMENT,
 	employee_id INTEGER
 	area TEXT,
-	area_lvl INTEGER);
+	area_lvl INTEGER)
+	;
 
 INSERT INTO training_levels (employee_id, area, area_lvl) VALUES
 	(2, "counter", 3),
 	(2, "cafe", 3),
 	(3, "counter", 3),
 	(3, "cafe", 3),
-	(4, "bakery", 2)
-	(4, "counter", 2)
-	(4, "cafe", 2)
+	(4, "bakery", 2),
+	(4, "counter", 2),
+	(4, "cafe", 2),
+	
+	;
 	
 
 
