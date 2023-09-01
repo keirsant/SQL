@@ -61,7 +61,7 @@ INSERT INTO employee_levels VALUES
 
 CREATE TABLE training_levels (
 	id INTEGER PRIMARY KEY AUTOINCREMENT,
-	employee_id INTEGER
+	employee_id INTEGER,
 	area TEXT,
 	area_lvl INTEGER)
 	;
