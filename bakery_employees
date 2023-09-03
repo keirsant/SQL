@@ -1,6 +1,4 @@
-/*cafe employee database*/
-
-
+/* bakery emplyee database */
 CREATE TABLE employees (
 	id INTEGER PRIMARY KEY AUTOINCREMENT,
 	name TEXT,
@@ -13,13 +11,12 @@ CREATE TABLE employees (
 	thu_avail TEXT,
 	fri_avail TEXT,
 	sat_avail TEXT,
-	sun_avail TEXT)
-	;
+	sun_avail TEXT);
 
 INSERT INTO employees (name, empl_lvl, phone, age, address, tue_avail, wed_avail, thu_avail, fri_avail, sat_avail, sun_avail) VALUES
 	("JoAnna Day", 1, "724-567-2318", 38, "34 Happy Dr. Verona PA 15623", "04:00 - 14:00", "04:00 - 14:00", "04:00 - 14:00", "04:00 - 14:00", "04:00 - 14:00", "04:00 - 14:00"),
 	("Tom McKenzie", 2, "412-543-6721", 33, "238 North St Oakmont 15620", "10:00 - 18:00", "10:00 - 18:00", "none", "10:00 - 18:00", "10:00 - 18:00", "10:00 - 18:00"),
-	("Hanna Curt", 2, "412-352-4579", 27, "491 Garden Ln Harmar PA 15641", "06:00-14:00", "06:00-14:00", "06:00-14:00", "06:00-14:00", "none", "none"),
+	("Hanna Curt", 2, "412-352-4579", 27, "491 Garden Ln Harmar PA 15641", "06:00 - 14:00", "06:00-14:00", "06:00-14:00", "06:00-14:00", "none", "none"),
 	("Sarah Langston", 3, "412-941-0915", 23, "6214 Aberdine St Apt 42 Aspinwall PA 16520", "04:00 - 17:00", "none", "none", "04:00 - 17:00", "04:00 - 17:00", "04:00 - 17:00"),
 	("Tariro Obdulia", 3, "412-392-6375", 22, "611 Pillow Ave Cheswick PA 15210", "11:00 - 18:00", "none", "none", "11:00 - 18:00", "8:00 - 18:00", "8:00 - 18:00"),
 	("George Waller", 3, "724-418-6246", 42, "92 Falk Ln Springdale PA 15413", "04:00 - 15:00", "04:00 - 15:00", "04:00 - 15:00", "04:00 - 15:00", "none", "none"),
@@ -39,24 +36,6 @@ INSERT INTO employees (name, empl_lvl, phone, age, address, tue_avail, wed_avail
 	("Zachariah Nelson", 4, "724-563-8117", 32, "2592 Wenzel Dr Pittsburgh PA 15238", "07:00 - 18:00", "07:00 - 18:00", "07:00 - 18:00", "07:00 - 18:00", "07:00 - 18:00", "07:00 - 18:00"),
 	("Darcey Lyons", 5, "724-883-2208", 19, "140 Jefferson Ave Cheswick PA 15024", "04:00 - 15:00", "04:00 - 15:00", "none", "none", "04:00 - 15:00", "04:00 - 15:00")
 	;
-
-
-CREATE TABLE employee_levels (
-	id INTEGER,
-	position TEXT,
-	key TEXT,
-	trainer TEXT,
-	solo_work TEXT)
-	;
-
-INSERT INTO employee_levels VALUES
-	(1, "owner", "y", "y", "y"),
-	(2, "manager", "y", "y", "y"),
-	(3, "sr. staff", "n", "y", "y"),
-	(4, "staff", "n", "n", "y"),
-	(5, "trainee", "n", "n", "n")
-	;
-
 
 
 CREATE TABLE training_levels (
@@ -107,5 +86,30 @@ INSERT INTO training_levels (employee_id, area, area_lvl) VALUES
 	(21, "bakery", 1)
 	;
 	
+CREATE TABLE employee_levels (
+	id INTEGER,
+	position TEXT,
+	key TEXT,
+	trainer TEXT,
+	solo_work TEXT)
+	;
 
+INSERT INTO employee_levels VALUES
+	(1, "owner", "y", "y", "y"),
+	(2, "manager", "y", "y", "y"),
+	(3, "sr. staff", "n", "y", "y"),
+	(4, "staff", "n", "n", "y"),
+	(5, "trainee", "n", "n", "n")
+	;
 
+/*who is available to train Darcy in the bakery on tuesday?*/
+
+SELECT e.name AS trainer, l.position, t.area_lvl AS bakery_lvl, e.tue_avail 
+    FROM employees AS e
+    JOIN employee_levels AS l
+    ON e.empl_lvl = l.id 
+    JOIN training_levels AS t
+    ON e.id = t.employee_id
+    WHERE l.trainer = "y" AND e.tue_avail <> "none" AND t.area ="bakery";
+
+/*Sarah is the best choice for training as her level is 2 and she can be spared. Later Darcy will be paired with George or JoAnna as her skills improve*/
