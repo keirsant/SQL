@@ -67,3 +67,18 @@ ELSE "less than 5" END AS pto_days
 FROM fortune_companies
 GROUP BY pto_days
 ORDER BY pto_days DESC;
+
+SELECT industry, ROUND(AVG(maternity_leave_weeks)) AS average_weeks_maternity
+FROM fortune_companies
+GROUP BY industry
+HAVING average_weeks_maternity >= 10
+ORDER BY average_weeks_maternity DESC;
+
+/*AND OR*/
+
+SELECT company_name, industry, paid_time_off_days, maternity_leave_weeks, avg_employee_tenure
+FROM fortune_companies
+WHERE healthcare_benefits=1 AND avg_employee_tenure >=6 
+AND (industry = "Technology" OR industry = "Telecommunications");
+
+/*Conclusion: Company FF is the best fit for me */
